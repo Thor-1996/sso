@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .g-input {
+        width: 300px;
+        height: 48px;
+        margin-bottom: 10px;
+        padding-left: 20px;
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+        outline: 1px solid rgba(0, 0, 0, 0);
+      }
+      form {
+        text-align: center;
+      }
+      .submit-btn {
+        width: 324px;
+        height: 48px;
+        margin-bottom: 10px;
+        color: #fff;
+        line-height: 48px;
+        background: linear-gradient(90deg, #ff8533, #ff6b00);
+        border-radius: 4px;
+        border: none;
+      }
+    </style>
+    <title>统一登录</title>
+  </head>
+  <body>
+    <form method="post" action="/login">
+      <h1>统一登录</h1>
+      <input
+        class="g-input"
+        type="text"
+        id="redirectUrl"
+        name="redirectUrl"
+        style="display: none"
+      />
+      <input
+        class="g-input"
+        type="text"
+        name="name"
+        placeholder="请输入你的登录账户"
+      />
+      <br />
+      <input
+        class="g-input"
+        type="password"
+        name="password"
+        placeholder="请输入密码"
+      />
+      <br />
+      <input type="submit" class="submit-btn" value="登录" />
+    </form>
+
+    <script>
+      const redirectUrl = document.getElementById("redirectUrl");
+      redirectUrl.value = location.search.replace("?redirectUrl=", "");
+    </script>
+  </body>
+</html>

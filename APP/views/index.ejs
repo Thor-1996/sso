@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>system1</title>
+  </head>
+  <body>
+    <% if(user) { %>
+    <h1>你好：<%= user %>!欢迎访问<%= system %>系统</h1>
+    <button id="btn">退出登录</button>
+    <% } else { %>
+    <h1>非法登录</h1>
+    <% } %>
+    <script>
+      function logout(href) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("get", href, true);
+        xhr.withCredentials = true;
+        xhr.send();
+      }
+      const $btn = document.getElementById("btn");
+
+      $btn.addEventListener("click", () => {
+        logout("http://localhost:8001/logout");
+        logout("http://localhost:8002/logout");
+        logout("http://localhost:8000/login/logout");
+
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
